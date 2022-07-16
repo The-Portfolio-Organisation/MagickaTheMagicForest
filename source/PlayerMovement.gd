@@ -6,17 +6,18 @@ export var jump_impulse = 20
 
 var mouse_sens = 0.3
 var camera_anglev = 0
-
 var velocity = Vector3.ZERO
 
+
 func _init():
+	# Disabling mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
+	# Moving
 	var direction = Vector3.UP
 	
-	# Moving
 	if Input.is_action_pressed("move_right"):
 		direction += $Pivot.global_transform.basis.x
 	if Input.is_action_pressed("move_left"):
@@ -42,10 +43,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("pause"):
 		get_tree().quit()
 
-
 func _input(event):   
-	print()
-		  
+	# Direction controlled by mouse
 	if event is InputEventMouseMotion:
 		$Pivot.rotate_y(deg2rad(-event.relative.x*mouse_sens))
 		var changev=-event.relative.y*mouse_sens

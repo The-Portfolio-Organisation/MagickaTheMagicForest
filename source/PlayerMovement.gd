@@ -9,6 +9,9 @@ var camera_anglev = 0
 
 var velocity = Vector3.ZERO
 
+func _init():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta):
 	var direction = Vector3.UP
@@ -34,6 +37,10 @@ func _physics_process(delta):
 	# Jumping
 	if is_on_floor() and Input.is_action_just_pressed("jump"):
 		velocity.y += jump_impulse
+	
+	# (tmp) Exit the game
+	if Input.is_action_just_pressed("pause"):
+		get_tree().quit()
 
 
 func _input(event):   

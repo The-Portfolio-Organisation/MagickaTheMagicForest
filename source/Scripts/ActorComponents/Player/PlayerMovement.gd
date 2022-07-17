@@ -8,6 +8,8 @@ var mouse_sens = 0.3
 var camera_anglev = 0
 var velocity = Vector3.ZERO
 
+puppet var puppet_direction = Vector3.UP
+
 
 func _init():
 	# Disabling mouse
@@ -18,14 +20,19 @@ func _physics_process(delta):
 	# Moving
 	var direction = Vector3.UP
 	
-	if (Input.is_action_pressed("move_right")):
-		direction += $Pivot.global_transform.basis.x
-	if (Input.is_action_pressed("move_left")):
-		direction -= $Pivot.global_transform.basis.x
-	if (Input.is_action_pressed("move_backward")):
-		direction += $Pivot.global_transform.basis.z
-	if (Input.is_action_pressed("move_forward")):
-		direction -= $Pivot.global_transform.basis.z
+	if (is_network_master()):
+		if (Input.is_action_pressed("move_right")):
+			direction += $Pivot.global_transform.basis.x
+		if (Input.is_action_pressed("move_left")):
+			direction -= $Pivot.global_transform.basis.x
+		if (Input.is_action_pressed("move_backward")):
+			direction += $Pivot.global_transform.basis.z
+		if (Input.is_action_pressed("move_forward")):
+			direction -= $Pivot.global_transform.basis.z
+		
+		rset("puppet_direction", direction)
+	else:
+		direction = puppet_direction
 
 	if (direction != Vector3.ZERO):
 		direction = direction.normalized()
@@ -42,7 +49,7 @@ func _physics_process(delta):
 	
 	# (tmp) Exit the game
 	if (Input.is_action_just_pressed("pause")):
-		get_tree().quit()
+		Connections.end_game()
 
 func _input(event):   
 	# Direction controlled by mouse

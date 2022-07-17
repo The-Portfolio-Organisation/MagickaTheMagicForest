@@ -18,36 +18,39 @@ func _physics_process(delta):
 	# Moving
 	var direction = Vector3.UP
 	
-	if Input.is_action_pressed("move_right"):
+	if (Input.is_action_pressed("move_right")):
 		direction += $Pivot.global_transform.basis.x
-	if Input.is_action_pressed("move_left"):
+	if (Input.is_action_pressed("move_left")):
 		direction -= $Pivot.global_transform.basis.x
-	if Input.is_action_pressed("move_backward"):
+	if (Input.is_action_pressed("move_backward")):
 		direction += $Pivot.global_transform.basis.z
-	if Input.is_action_pressed("move_forward"):
+	if (Input.is_action_pressed("move_forward")):
 		direction -= $Pivot.global_transform.basis.z
 
-	if direction != Vector3.ZERO:
+	if (direction != Vector3.ZERO):
 		direction = direction.normalized()
 
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 	velocity.y -= fall_acceleration * delta
+	
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
 	# Jumping
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
+	if (is_on_floor() and Input.is_action_just_pressed("jump")):
 		velocity.y += jump_impulse
 	
 	# (tmp) Exit the game
-	if Input.is_action_just_pressed("pause"):
+	if (Input.is_action_just_pressed("pause")):
 		get_tree().quit()
 
 func _input(event):   
 	# Direction controlled by mouse
-	if event is InputEventMouseMotion:
+	if (event is InputEventMouseMotion):
 		$Pivot.rotate_y(deg2rad(-event.relative.x*mouse_sens))
-		var changev=-event.relative.y*mouse_sens
-		if camera_anglev+changev>-50 and camera_anglev+changev<50:
-			camera_anglev+=changev
+		
+		var changev = -(event.relative.y) * mouse_sens
+		
+		if (camera_anglev + changev > -50 and camera_anglev + changev < 50):
+			camera_anglev += changev
 			$Pivot/Camera.rotate_x(deg2rad(changev))

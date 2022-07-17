@@ -11,6 +11,7 @@ var players = {}
 var players_ready = []
 
 # Signals for lobby GUI
+signal player_list_changed()
 signal connection_failed()
 signal connection_succeeded()
 signal game_ended()
@@ -21,17 +22,20 @@ signal game_error(err)
 func _player_connected(id):
 	rpc_id(id, "register_player", player_name)
 
+func _server_disconnected():
+	emit_signal("game_error", "Server disconnected")
+	end_game()
+
 func _player_disconnected(id):
 	if has_node("/root/Main"):
 		if get_tree().is_network_server():
 			emit_signal("game_error", "Player " + players[id] + " disconnected")
 			end_game()
-		else:
-			unregister_player(id)
+	else:
+		unregister_player(id)
 
 func _connected_ok():
-	emit_signal("game_error", "Server disconnected")
-	end_game()
+	emit_signal("connection_succeeded")
 
 func _connected_fail():
 	get_tree().set_network_peer(null)
@@ -50,6 +54,7 @@ remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
 	print(id)
 	players[id] = new_player_name
+	emit_signal("player_list_changed")
 
 remote func ready_to_start(id):
 	assert(get_tree().is_network_server())
@@ -78,6 +83,7 @@ func join_game(ip, new_player_name):
 # Connection mannagement
 func unregister_player(id):
 	players.erase(id)
+	emit_signal("player_list_changed")
 
 func end_game():
 	if has_node("/root/Main"):

@@ -28,7 +28,7 @@ func _on_JoinBtn_pressed():
 	if $Connect/NameEdt.text == "":
 		$Connect/ErrorLabel.text = "Invalid name!"
 		return
-
+	
 	var ip = $Connect/IpEdt.text
 	if not ip.is_valid_ip_address():
 		$Connect/ErrorLabel.text = "Invalid IP address!"
@@ -38,7 +38,7 @@ func _on_JoinBtn_pressed():
 	$Connect/HostBtn.disabled = true
 	$Connect/JoinBtn.disabled = true
 	
-	var player_name = $Connect/Name.text
+	var player_name = $Connect/NameEdt.text
 	Connections.join_game(ip, player_name)
 
 func _on_StartBtn_pressed():

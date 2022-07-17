@@ -1,9 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleMesh" id=1]
 mid_height = 2.0
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 5, 0.1, 0.1 )
+
+[sub_resource type="PrismMesh" id=4]
+size = Vector3( 10, 0.1, 0.1 )
 
 [sub_resource type="CapsuleShape" id=2]
 height = 2.0
@@ -22,6 +28,15 @@ material/0 = null
 
 [node name="Camera" type="Camera" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Pivot"]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="Pivot"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

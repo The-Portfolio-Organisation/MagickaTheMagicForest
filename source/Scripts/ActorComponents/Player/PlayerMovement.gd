@@ -9,14 +9,12 @@ var camera_anglev = 0
 var velocity = Vector3.ZERO
 
 puppet var puppet_direction = Vector3.UP
+puppet var puppet_changev = 0
 
 
 func _ready():
 	if is_network_master():
 		$Pivot/Camera.make_current()
-
-
-	look_at(Vector3.ZERO, Vector3.UP)
 
 func _init():
 	# Disabling mouse
@@ -33,6 +31,8 @@ func _physics_process(delta):
 		if (Input.is_action_pressed("move_left")):
 			direction -= $Pivot.global_transform.basis.x
 		if (Input.is_action_pressed("move_backward")):
+			print($Pivot/Camera.transform)
+			print($Pivot.transform)
 			direction += $Pivot.global_transform.basis.z
 		if (Input.is_action_pressed("move_forward")):
 			direction -= $Pivot.global_transform.basis.z
@@ -60,12 +60,17 @@ func _physics_process(delta):
 	
 
 func _input(event):   
+	
 	# Direction controlled by mouse
 	if (event is InputEventMouseMotion):
-		$Pivot.rotate_y(deg2rad(-event.relative.x*mouse_sens))
-		
-		var changev = -(event.relative.y) * mouse_sens
-		
+		var changev = 0
+		if (is_network_master()):
+			$Pivot.rotate_y(deg2rad(-event.relative.x*mouse_sens))
+			changev = -(event.relative.y) * mouse_sens
+			rset("puppet_changev", changev)
+		else:
+			changev = puppet_changev
+			
 		if (camera_anglev + changev > -50 and camera_anglev + changev < 50):
 			camera_anglev += changev
 			$Pivot/Camera.rotate_x(deg2rad(changev))

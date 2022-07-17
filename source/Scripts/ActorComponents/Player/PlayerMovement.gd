@@ -12,6 +12,8 @@ puppet var puppet_direction = Vector3.UP
 
 
 func _ready():
+	Connections.connect("game_ended", self, "_on_game_ended")
+	
 	if is_network_master():
 		$Pivot/Camera.make_current()
 
@@ -54,6 +56,12 @@ func _physics_process(delta):
 	# (tmp) Exit the game
 	if (Input.is_action_just_pressed("pause")):
 		Connections.end_game()
+
+func _on_game_ended():
+	# Enabling mouse
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+	
 
 func _input(event):   
 	# Direction controlled by mouse

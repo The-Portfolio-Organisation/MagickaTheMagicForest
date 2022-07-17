@@ -86,8 +86,8 @@ func unregister_player(id):
 	emit_signal("player_list_changed")
 
 func end_game():
-	if has_node("/root/Main"):
-		get_node("/root/Main").queue_free()
+	if has_node("/root/TestScene"):
+		get_node("/root/TestScene").queue_free()
 
 	emit_signal("game_ended")
 	players.clear()

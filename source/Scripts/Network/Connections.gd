@@ -107,12 +107,14 @@ remote func pre_start_game(spawn_points):
 
 	for p_id in spawn_points:
 		var spawn_pos = Transform.IDENTITY 
+		spawn_pos.origin.y = 1
 		spawn_pos.origin = get_p_starting_points(spawn_points, spawn_pos.origin)[p_id]
 			
 		var player = player_scene.instance()
 
 		player.set_name(str(p_id)) 
 		player.set_transform(spawn_pos)
+		player.change_look_at(Vector3.ZERO)
 		player.set_network_master(p_id)
 		
 		world.add_child(player)
@@ -146,7 +148,7 @@ func get_player_name():
 
 func get_p_starting_points(starting_points, center = Vector3.ZERO):
 	var n_pts = starting_points.size()
-	var radius = n_pts - 1
+	var radius = 5 * (n_pts - 1)
 	var coords = {}
 	
 	var id = 0

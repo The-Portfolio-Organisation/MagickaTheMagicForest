@@ -12,10 +12,11 @@ puppet var puppet_direction = Vector3.UP
 
 
 func _ready():
-	Connections.connect("game_ended", self, "_on_game_ended")
-	
 	if is_network_master():
 		$Pivot/Camera.make_current()
+
+
+	look_at(Vector3.ZERO, Vector3.UP)
 
 func _init():
 	# Disabling mouse
@@ -56,11 +57,6 @@ func _physics_process(delta):
 	# (tmp) Exit the game
 	if (Input.is_action_just_pressed("pause")):
 		Connections.end_game()
-
-func _on_game_ended():
-	# Enabling mouse
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 	
 
 func _input(event):   
@@ -73,3 +69,6 @@ func _input(event):
 		if (camera_anglev + changev > -50 and camera_anglev + changev < 50):
 			camera_anglev += changev
 			$Pivot/Camera.rotate_x(deg2rad(changev))
+
+func change_look_at(point):
+	look_at(point, Vector3.UP)

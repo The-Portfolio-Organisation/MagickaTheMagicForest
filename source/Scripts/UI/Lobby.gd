@@ -59,6 +59,7 @@ func _on_connection_failed():
 
 func _on_game_ended():
 	show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$Connect.show()
 	$Players.hide()
 	$Connect/HostBtn.disabled = false

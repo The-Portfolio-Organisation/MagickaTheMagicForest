@@ -11,6 +11,10 @@ var velocity = Vector3.ZERO
 puppet var puppet_direction = Vector3.UP
 
 
+func _ready():
+	if is_network_master():
+		$Pivot/Camera.make_current()
+
 func _init():
 	# Disabling mouse
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

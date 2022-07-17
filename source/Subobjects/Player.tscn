@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://PlayerMovement.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=1]
+
 
 [sub_resource type="CapsuleMesh" id=1]
 mid_height = 2.0

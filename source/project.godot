@@ -11,8 +11,12 @@ config_version=4
 [application]
 
 config/name="Magicka"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://Scenes/Lobby.tscn"
 config/icon="res://Assets/Config/icon.png"
+
+[autoload]
+
+Connections="*res://Scripts/Network/Connections.gd"
 
 [input]
 

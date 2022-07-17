@@ -107,9 +107,7 @@ remote func pre_start_game(spawn_points):
 
 	for p_id in spawn_points:
 		var spawn_pos = Transform.IDENTITY 
-		
-		if p_id != 1:
-			spawn_pos.origin = Vector3(-1, 1, -11)
+		spawn_pos.origin = get_p_starting_points(spawn_points, spawn_pos.origin)[p_id]
 			
 		var player = player_scene.instance()
 
@@ -146,4 +144,22 @@ func get_player_list():
 func get_player_name():
 	return player_name
 
+func get_p_starting_points(starting_points, center = Vector3.ZERO):
+	var n_pts = starting_points.size()
+	var radius = n_pts - 1
+	var coords = {}
+	
+	var id = 0
+	for p in starting_points:
+		var t_id = (2 * PI * id) / n_pts
+		id += 1
+		var coord_id = Vector3.ZERO
+		
+		coord_id.x = center.x + (radius * cos(t_id))
+		coord_id.y = center.y
+		coord_id.z = center.z + (radius * sin(t_id))
+		
+		coords[p] = coord_id
+	
+	return coords
 

@@ -114,10 +114,10 @@ remote func pre_start_game(spawn_points):
 
 		player.set_name(str(p_id)) 
 		player.set_transform(spawn_pos)
-		player.change_look_at(Vector3.ZERO)
 		player.set_network_master(p_id)
 		
 		world.add_child(player)
+		player.change_look_at(Vector3(0, player.transform.basis.y.y, 0))
 
 	if not get_tree().is_network_server():
 		rpc_id(1, "ready_to_start", get_tree().get_network_unique_id())

@@ -14,6 +14,7 @@ puppet var puppet_changev = 0
 
 
 func _ready():
+	print(transform.basis.y.y)
 	if is_network_master():
 		$Pivot/Camera.make_current()
 
@@ -32,8 +33,6 @@ func _physics_process(delta):
 		if (Input.is_action_pressed("move_left")):
 			direction -= $Pivot.global_transform.basis.x
 		if (Input.is_action_pressed("move_backward")):
-			print($Pivot/Camera.transform)
-			print($Pivot.transform)
 			direction += $Pivot.global_transform.basis.z
 		if (Input.is_action_pressed("move_forward")):
 			direction -= $Pivot.global_transform.basis.z
@@ -79,4 +78,6 @@ func _input(event):
 			$Pivot/Camera.rotate_x(deg2rad(changev))
 
 func change_look_at(point):
+	print("Transform: " + str(transform))
+	print("Point: " + str(point))
 	look_at(point, Vector3.UP)

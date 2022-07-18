@@ -1,14 +1,28 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=1]
 
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.533333, 0.0784314, 0.411765, 1 )
+
 [sub_resource type="CapsuleMesh" id=1]
+material = SubResource( 5 )
 mid_height = 2.0
 
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 0.0784314, 0.380392, 0.027451, 1 )
+
 [sub_resource type="CubeMesh" id=3]
+material = SubResource( 6 )
 size = Vector3( 5, 0.1, 0.1 )
 
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 0.784314, 0.576471, 0.164706, 1 )
+metallic = 0.69
+metallic_specular = 0.69
+
 [sub_resource type="PrismMesh" id=4]
+material = SubResource( 7 )
 size = Vector3( 10, 0.1, 0.1 )
 
 [sub_resource type="CapsuleShape" id=2]

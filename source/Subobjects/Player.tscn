@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=1]
 
@@ -25,6 +25,13 @@ metallic_specular = 0.69
 material = SubResource( 7 )
 size = Vector3( 10, 0.1, 0.1 )
 
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 1, 0.964706, 0.0823529, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+material = SubResource( 8 )
+size = Vector3( 1, 1, 1 )
+
 [sub_resource type="CapsuleShape" id=2]
 height = 2.0
 
@@ -40,9 +47,6 @@ mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
-[node name="Camera" type="Camera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-
 [node name="MeshInstance" type="MeshInstance" parent="Pivot"]
 mesh = SubResource( 3 )
 material/0 = null
@@ -51,6 +55,13 @@ material/0 = null
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 4 )
 material/0 = null
+
+[node name="Head" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38655, 0 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Pivot/Head"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

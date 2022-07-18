@@ -5,19 +5,19 @@ export var fall_acceleration = 75
 export var jump_impulse = 20
 
 var mouse_sens = 0.5
-var camera_anglev = 0
 var velocity = Vector3.ZERO
 
 puppet var puppet_direction = Vector3.UP
 puppet var puppet_velocity = Vector3.UP
 puppet var puppet_changev = 0
 puppet var puppet_rotation = 0
+puppet var camera_anglev = 0
 
 
 func _ready():
 	print(transform.basis.y.y)
 	if is_network_master():
-		$Pivot/Camera.make_current()
+		$Pivot/Head/Camera.make_current()
 	
 	puppet_rotation = $Pivot.rotation.y
 
@@ -64,7 +64,7 @@ func _physics_process(delta):
 		Connections.end_game()
 	
 	$Pivot.rotation.y = puppet_rotation
-	$Pivot/Camera.rotation.x = deg2rad(camera_anglev)
+	$Pivot/Head.rotation.x = deg2rad(camera_anglev)
 	
 
 func _input(event):   
@@ -75,15 +75,17 @@ func _input(event):
 			puppet_rotation = $Pivot.rotation.y + deg2rad(-event.relative.x * mouse_sens)
 			changev = -(event.relative.y) * mouse_sens
 			
+			camera_anglev = rad2deg($Pivot/Head.rotation.x)
+			
+			if (camera_anglev + (-event.relative.y * mouse_sens) >= -60 
+				and camera_anglev + (-event.relative.y * mouse_sens) <= 60):
+				camera_anglev += (-event.relative.y * mouse_sens * mouse_sens)
+			
 			rset("puppet_changev", changev)
 			rset("puppet_rotation", puppet_rotation)
+			rset("camera_anglev", camera_anglev)
 		else:
 			changev = puppet_changev
-			puppet_rotation = puppet_rotation
-			
-		if (camera_anglev + (-event.relative.y * mouse_sens) >= -60 
-			and camera_anglev + (-event.relative.y * mouse_sens) <= 60):
-			camera_anglev += (-event.relative.y * mouse_sens * mouse_sens)
 
 func change_look_at(point):
 	print("Transform: " + str(transform))

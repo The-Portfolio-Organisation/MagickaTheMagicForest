@@ -20,24 +20,27 @@ signal game_error(err)
 
 # Callback functions
 func _player_connected(id):
+	print("Player " + str(id) + " connected")
 	rpc_id(id, "register_player", player_name)
 
 func _server_disconnected():
+	print("Server diconnected")
 	emit_signal("game_error", "Server disconnected")
 	end_game()
 
 func _player_disconnected(id):
-	if has_node("/root/Main"):
-		if get_tree().is_network_server():
-			emit_signal("game_error", "Player " + players[id] + " disconnected")
-			end_game()
+	print("Player " + str(id) + " disconnected")
+	if has_node("/root/TestScene/" + str(id)):
+		get_node("/root/TestScene/" + str(id)).queue_free()
 	else:
 		unregister_player(id)
 
 func _connected_ok():
+	print("Connected ok")
 	emit_signal("connection_succeeded")
 
 func _connected_fail():
+	print("Connected fail")
 	get_tree().set_network_peer(null)
 	emit_signal("connection_failed")
 
@@ -52,7 +55,6 @@ func _ready():
 # Lobby management functions
 remote func register_player(new_player_name):
 	var id = get_tree().get_rpc_sender_id()
-	print(id)
 	players[id] = new_player_name
 	emit_signal("player_list_changed")
 
@@ -86,11 +88,14 @@ func unregister_player(id):
 	emit_signal("player_list_changed")
 
 func end_game():
+	
 	if has_node("/root/TestScene"):
 		get_node("/root/TestScene").queue_free()
 
 	emit_signal("game_ended")
 	players.clear()
+	get_tree().set_network_peer(null)
+
 
 remote func post_start_game():
 	get_tree().set_pause(false)

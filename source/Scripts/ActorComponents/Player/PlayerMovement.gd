@@ -9,6 +9,7 @@ var camera_anglev = 0
 var velocity = Vector3.ZERO
 
 puppet var puppet_direction = Vector3.UP
+puppet var puppet_velocity = Vector3.UP
 puppet var puppet_changev = 0
 
 
@@ -36,10 +37,16 @@ func _physics_process(delta):
 			direction += $Pivot.global_transform.basis.z
 		if (Input.is_action_pressed("move_forward")):
 			direction -= $Pivot.global_transform.basis.z
+	
+		# Jumping
+		if (is_on_floor() and Input.is_action_just_pressed("jump")):
+			velocity.y += jump_impulse
 		
 		rset("puppet_direction", direction)
+		rset("puppet_velocity", velocity)
 	else:
 		direction = puppet_direction
+		velocity = puppet_velocity
 
 	if (direction != Vector3.ZERO):
 		direction = direction.normalized()
@@ -49,10 +56,6 @@ func _physics_process(delta):
 	velocity.y -= fall_acceleration * delta
 	
 	velocity = move_and_slide(velocity, Vector3.UP)
-	
-	# Jumping
-	if (is_on_floor() and Input.is_action_just_pressed("jump")):
-		velocity.y += jump_impulse
 	
 	# (tmp) Exit the game
 	if (Input.is_action_just_pressed("pause")):

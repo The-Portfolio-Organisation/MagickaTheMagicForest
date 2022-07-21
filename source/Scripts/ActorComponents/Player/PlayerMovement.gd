@@ -59,10 +59,6 @@ func _physics_process(delta):
 	
 	velocity = move_and_slide(velocity, Vector3.UP)
 	
-	# (tmp) Exit the game
-	if (Input.is_action_just_pressed("pause")):
-		Connections.end_game()
-	
 	$Pivot.rotation.y = puppet_rotation
 	$Pivot/Head.rotation.x = deg2rad(camera_anglev)
 	

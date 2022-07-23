@@ -39,6 +39,9 @@ func _physics_process(delta):
 			direction += $Pivot.global_transform.basis.z
 		if (Input.is_action_pressed("move_forward")):
 			direction -= $Pivot.global_transform.basis.z
+		# (tmp) Exit the game
+		if (Input.is_action_just_pressed("stop")):
+			Connections.end_game()
 	
 		# Jumping
 		if (is_on_floor() and Input.is_action_just_pressed("jump")):

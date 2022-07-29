@@ -29,6 +29,15 @@ func _init():
 func _physics_process(delta):
 	# Moving
 	var direction = Vector3.UP
+		
+	if (Input.is_action_just_pressed("inventory")):
+		if ($Inventory.is_visible_in_tree()):
+			$Inventory.hide()
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		else:
+			$Inventory.show()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			print(get_items())
 	
 	if (is_network_master()):
 		if (Input.is_action_pressed("move_right")):
@@ -42,14 +51,6 @@ func _physics_process(delta):
 		# (tmp) Exit the game
 		if (Input.is_action_just_pressed("stop")):
 			Connections.end_game()
-		
-		if (Input.is_action_just_pressed("inventory")):
-			if ($Inventory.is_visible_in_tree()):
-				$Inventory.hide()
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			else:
-				$Inventory.show()
-				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 		# Jumping
 		if (is_on_floor() and Input.is_action_just_pressed("jump")):
@@ -98,3 +99,12 @@ func change_look_at(point):
 	print("Transform: " + str(transform))
 	print("Point: " + str(point))
 	look_at(point, Vector3.UP)
+
+func get_items():
+	var items = []
+	for i in $Inventory/GridContainer.get_children():
+		if (i.ItemId):
+			items.append(i.ItemId)
+	
+	return items
+	

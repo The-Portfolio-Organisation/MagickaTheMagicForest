@@ -4,6 +4,7 @@
 [ext_resource path="res://Scenes/UI/hb_slot.tscn" type="PackedScene" id=2]
 
 [node name="Inventory" type="Control"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )

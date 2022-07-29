@@ -4,9 +4,12 @@ export(int) var rows = 5
 export(int) var cols = 4
 export(PackedScene) var baseContainer = load("res://Scenes/UI/hb_slot.tscn")
 
-export(Array) var content = [1001]
+export(Array) var content = [1001, null, 1002]
 
 func _ready():
+	while (content.size() != rows * cols):
+		content.append(null)
+		
 	$GridContainer.columns = cols
 	for i in range(rows * cols):
 		var  container = baseContainer.instance()

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/UI/Inventory.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/hb_slot.tscn" type="PackedScene" id=2]
+
+[node name="Inventory" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+rows = 4
+cols = 5
+baseContainer = ExtResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0

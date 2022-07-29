@@ -80,5 +80,6 @@ script = ExtResource( 3 )
 rows = 4
 cols = 5
 baseContainer = ExtResource( 4 )
+content = [ 1001, null, "1001", null, "1002" ]
 
 [node name="GridContainer" type="GridContainer" parent="Inventory"]

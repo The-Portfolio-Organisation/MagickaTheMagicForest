@@ -42,6 +42,14 @@ func _physics_process(delta):
 		# (tmp) Exit the game
 		if (Input.is_action_just_pressed("stop")):
 			Connections.end_game()
+		
+		if (Input.is_action_just_pressed("inventory")):
+			if ($Inventory.is_visible_in_tree()):
+				$Inventory.hide()
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				$Inventory.show()
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 		# Jumping
 		if (is_on_floor() and Input.is_action_just_pressed("jump")):
@@ -70,7 +78,7 @@ func _input(event):
 	# Direction controlled by mouse
 	if (event is InputEventMouseMotion):
 		var changev = 0
-		if (is_network_master()):
+		if (is_network_master() and Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE):
 			puppet_rotation = $Pivot.rotation.y + deg2rad(-event.relative.x * mouse_sens)
 			changev = -(event.relative.y) * mouse_sens
 			

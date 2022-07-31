@@ -6,7 +6,7 @@ export(String) var DisplayName = "Test_Item"
 export(Mesh) var RefModel;
 export(StreamTexture) var RefUIImage;
 
-var itemType = Constants.EItemType.Default;
+var itemType = EItemType.Default;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

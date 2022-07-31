@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Data/ToolData.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Models/Test/Sting-Sword-lowpoly.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://Assets/Config/icon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+ID = 1
+DisplayName = "Test_Item"
+RefModel = ExtResource( 2 )
+RefUIImage = ExtResource( 3 )
+DamagePoints = 10
+AttackRange = 1.2
+MovementSpeedMultiplier = 0.8

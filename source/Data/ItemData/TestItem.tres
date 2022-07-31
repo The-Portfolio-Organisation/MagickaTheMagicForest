@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource( 1 )
 ID = 0
-DisplayName = "Test_Sword"
+DisplayName = "Test_Apple"
 RefModel = ExtResource( 3 )
 RefUIImage = ExtResource( 2 )

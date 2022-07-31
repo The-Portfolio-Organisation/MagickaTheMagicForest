@@ -1,5 +1,7 @@
 extends Node2D
 
+var effect
+var recording
 
 func _ready():
 	Connections.connect("connection_failed", self, "_on_connection_failed")
@@ -9,6 +11,10 @@ func _ready():
 	Connections.connect("game_error", self, "_on_game_error")
 	
 	$Control/Connect/NameEdt.text = Connections.player_name
+	
+	var idx = AudioServer.get_bus_index("Record")
+	effect = AudioServer.get_bus_effect(idx, 0)
+	effect.set_recording_active(true)
 	
 # Buttuns action
 func _on_HostBtn_pressed():
@@ -81,3 +87,19 @@ func refresh_lobby():
 
 	$Control/Players/StartBtn.disabled = not get_tree().is_network_server()
 
+remote func send_rec_data(rec_data):
+	var sample = AudioStreamSample.new()
+	sample.data = rec_data
+	sample.format = AudioStreamSample.FORMAT_16_BITS
+	sample.mix_rate = AudioServer.get_mix_rate()*2
+	$AudioStreamPlayer.stream = sample
+	$AudioStreamPlayer.play()
+
+func _on_send_recording_timer_timeout():
+	if get_tree().network_peer != null:
+		if get_tree().get_network_connected_peers().size() > 0:
+			recording = effect.get_recording()
+			effect.set_recording_active(false)
+			rpc("send_rec_data", recording.data)
+			effect.set_recording_active(true)
+			

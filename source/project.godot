@@ -14,6 +14,10 @@ config/name="Magicka"
 run/main_scene="res://Scenes/Lobby.tscn"
 config/icon="res://Assets/Config/icon.png"
 
+[audio]
+
+enable_audio_input=true
+
 [autoload]
 
 Connections="*res://Scripts/Network/Connections.gd"

@@ -8,11 +8,37 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Constants",
+"language": "GDScript",
+"path": "res://Scripts/Utility/ItemType.gd"
+}, {
+"base": "Resource",
+"class": "ItemData",
+"language": "GDScript",
+"path": "res://Scripts/Data/ItemData.gd"
+}, {
+"base": "ItemData",
+"class": "ToolData",
+"language": "GDScript",
+"path": "res://Scripts/Data/ToolData.gd"
+} ]
+_global_script_class_icons={
+"Constants": "",
+"ItemData": "",
+"ToolData": ""
+}
+
 [application]
 
 config/name="Magicka"
 run/main_scene="res://Scenes/TestScene.tscn"
 config/icon="res://Assets/Config/icon.png"
+
+[autoload]
+
+ItemType="*res://Scripts/Utility/ItemType.gd"
 
 [input]
 

@@ -1,5 +1,5 @@
-extends ItemData
-class_name ToolData
+extends ItemResource
+class_name ToolResource
 
 export(int) var DamagePoints = 1;
 export(float) var AttackRange = 1.0;

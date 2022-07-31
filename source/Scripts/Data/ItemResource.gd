@@ -1,5 +1,5 @@
 extends Resource
-class_name ItemData
+class_name ItemResource
 
 export var ID = 0;
 export(String) var DisplayName = "Test_Item"

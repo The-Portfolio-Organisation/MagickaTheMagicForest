@@ -4,7 +4,9 @@ export(int) var rows = 5
 export(int) var cols = 4
 export(PackedScene) var baseContainer = load("res://Scenes/UI/hb_slot.tscn")
 
-export(Array) var start_content = [1001, null, 1004]
+export(Array, int) var start_content = [1001, null, 1004]
+
+export(Resource) var items_table
 
 func _ready():
 	while (start_content.size() != rows * cols):

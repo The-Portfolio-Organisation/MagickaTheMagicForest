@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "ItemTable",
 "language": "GDScript",
-"path": "res://Scripts/Utility/ItemsTable.gd"
+"path": "res://Scripts/Utility/Item/ItemsTable.gd"
 }, {
 "base": "ItemResource",
 "class": "ToolResource",
@@ -42,7 +42,7 @@ enable_audio_input=true
 
 [autoload]
 
-EItemType="*res://Scripts/Utility/EItemType.gd"
+EItemType="*res://Scripts/Utility/Item/EItemType.gd"
 Connections="*res://Scripts/Network/Connections.gd"
 ItemData="*res://Scripts/Utility/ItemData.gd"
 

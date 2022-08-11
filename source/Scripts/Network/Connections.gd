@@ -103,7 +103,7 @@ remote func post_start_game():
 
 # Logistic management
 remote func pre_start_game(spawn_points):
-	var world = load("res://Scenes/TestScene.tscn").instance()
+	var world = load("res://Scenes/Gyms/ItemGym.tscn").instance()
 	get_tree().get_root().add_child(world)
 
 	get_tree().get_root().get_node("Lobby").hide()

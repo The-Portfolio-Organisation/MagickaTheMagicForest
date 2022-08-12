@@ -1,5 +1,7 @@
 extends TextureRect
 
+var table
+
 var MouseOver = false
 var ItemId = null
 
@@ -20,10 +22,11 @@ func _on_TextureRect_mouse_exited():
 func try_add_item(new_item_id):
 	if (ItemId == null and new_item_id != null):
 		ItemId = new_item_id
-		var new_item_name = ItemData.item_data[str(ItemId)]["name"]
-		var new_item_type = ItemData.item_data[str(ItemId)]["type"]
+		table.add_dict()
+		print(table.table)
+		var new_item_name = table.table[ItemId].DisplayName
 		
-		var new_item_tex = load("res://Assets/Materials/" + new_item_type + "/" + new_item_name + ".png")
+		var new_item_tex = table.table[ItemId].RefModel
 		
 		$TextureRect.texture = new_item_tex
 		return true

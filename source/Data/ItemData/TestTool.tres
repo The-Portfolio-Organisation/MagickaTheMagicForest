@@ -4,10 +4,9 @@
 [ext_resource path="res://Assets/Models/Test/Sting-Sword-lowpoly.obj" type="ArrayMesh" id=2]
 [ext_resource path="res://Assets/Config/icon.png" type="Texture" id=3]
 
-
 [resource]
 script = ExtResource( 1 )
-ID = 1
+ID = 1001
 DisplayName = "Test_Item"
 RefModel = ExtResource( 2 )
 RefUIImage = ExtResource( 3 )

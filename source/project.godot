@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Magicka"
-run/main_scene="res://Scenes/TestScene.tscn"
+run/main_scene="res://Scenes/TestGeneration.tscn"
 config/icon="res://Assets/Config/icon.png"
 
 [input]

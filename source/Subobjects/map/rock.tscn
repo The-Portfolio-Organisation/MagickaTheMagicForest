@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.6, 0.65098, 0.654902, 1 )
+
+[node name="Spatial" type="Spatial"]
+
+[node name="RigidBody" type="RigidBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+shape = SubResource( 3 )
+
+[node name="CSGCylinder" type="CSGSphere" parent="RigidBody"]
+radial_segments = 4
+rings = 5
+smooth_faces = false
+material = SubResource( 2 )

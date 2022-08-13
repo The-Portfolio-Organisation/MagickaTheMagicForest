@@ -1,33 +1,43 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://GeneratingMap.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/ImmediateGeometry.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Models/icon.png" type="Texture" id=2]
 [ext_resource path="res://Subobjects/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Subobjects/map/rock.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Subobjects/map/tree.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Audio/icon.png" type="Texture" id=6]
 
-[sub_resource type="SpatialMaterial" id=1]
-albedo_color = Color( 0.14902, 0.278431, 0.67451, 1 )
+[sub_resource type="SpatialMaterial" id=4]
+albedo_texture = ExtResource( 6 )
+uv1_scale = Vector3( 5, 5, 1 )
+uv1_triplanar_sharpness = 0.000690533
+uv2_scale = Vector3( 5, 5, 1 )
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape" id=3]
 
 [node name="Spatial" type="Spatial"]
 script = ExtResource( 1 )
+tree = ExtResource( 5 )
+rock = ExtResource( 4 )
+noise_period = 150
+noise_octave = 10
+map_size = Vector2( 1000, 1000 )
+map_depth = 50
+map_width = 50
+texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.24758, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.407835, 3.21584, 0.921881 )
+speed = 150
+jump_impulse = 100
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
 
-[node name="ImmediateGeometry" type="ImmediateGeometry" parent="."]
-material_override = SubResource( 1 )
-script = ExtResource( 2 )
+[node name="MeshInstance" type="MeshInstance" parent="."]
+material_override = SubResource( 4 )
 
-[node name="StaticBody" type="StaticBody" parent="ImmediateGeometry"]
-transform = Transform( 115.875, 0, 0, 0, 1, 0, 0, 0, 43.0257, 0, 0, 0 )
+[node name="Area" type="Area" parent="MeshInstance"]
 
-[node name="CollisionShape" type="CollisionShape" parent="ImmediateGeometry/StaticBody"]
-transform = Transform( 1, 0, 0, 0, 0.568041, 0, 0, 0, 2.77715, 0, 0, 0 )
-shape = SubResource( 2 )
-
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2, 0 )
+[node name="CollisionShape" type="CollisionShape" parent="MeshInstance/Area"]
+shape = SubResource( 3 )

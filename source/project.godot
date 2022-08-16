@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "ItemResource",
+"base": "Node",
+"class": "ItemRootComponent",
 "language": "GDScript",
-"path": "res://Scripts/Data/ItemResource.gd"
+"path": "res://Scripts/ActorComponents/Item/ItemRootComponent.gd"
 }, {
 "base": "Node",
 "class": "ItemTable",
@@ -25,7 +25,7 @@ _global_script_classes=[ {
 "path": "res://Scripts/Data/ToolResource.gd"
 } ]
 _global_script_class_icons={
-"ItemResource": "",
+"ItemRootComponent": "",
 "ItemTable": "",
 "ToolResource": ""
 }
@@ -42,8 +42,10 @@ enable_audio_input=true
 
 [autoload]
 
-EItemType="*res://Scripts/Utility/Item/EItemType.gd"
 Connections="*res://Scripts/Network/Connections.gd"
+EItemType="*res://Scripts/Utility/Item/EItemType.gd"
+ItemResource="*res://Scripts/Data/ItemResource.gd"
+ItemFactory="*res://Scripts/Utility/Item/ItemFactory.gd"
 ItemData="*res://Scripts/Utility/ItemData.gd"
 
 [display]

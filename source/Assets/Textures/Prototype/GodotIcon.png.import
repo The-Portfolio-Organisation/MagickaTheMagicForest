@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon.png-15775d007659349b5824d73669164a07.s3tc.stex"
-path.etc2="res://.import/icon.png-15775d007659349b5824d73669164a07.etc2.stex"
+path.s3tc="res://.import/GodotIcon.png-61f9dce847ac2687f7427398b1468b7d.s3tc.stex"
+path.etc2="res://.import/GodotIcon.png-61f9dce847ac2687f7427398b1468b7d.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Audio/icon.png"
-dest_files=[ "res://.import/icon.png-15775d007659349b5824d73669164a07.s3tc.stex", "res://.import/icon.png-15775d007659349b5824d73669164a07.etc2.stex" ]
+source_file="res://Assets/Textures/Prototype/GodotIcon.png"
+dest_files=[ "res://.import/GodotIcon.png-61f9dce847ac2687f7427398b1468b7d.s3tc.stex", "res://.import/GodotIcon.png-61f9dce847ac2687f7427398b1468b7d.etc2.stex" ]
 
 [params]
 

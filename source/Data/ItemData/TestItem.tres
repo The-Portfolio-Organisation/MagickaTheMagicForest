@@ -4,7 +4,6 @@
 [ext_resource path="res://Assets/UI/icon.png" type="Texture" id=2]
 [ext_resource path="res://Assets/Models/Test/HP_RockForm_01.obj" type="ArrayMesh" id=3]
 
-
 [resource]
 script = ExtResource( 1 )
 ID = 0

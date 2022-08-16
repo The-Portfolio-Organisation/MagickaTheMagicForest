@@ -14,20 +14,14 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/ActorComponents/Item/ItemRootComponent.gd"
 }, {
-"base": "Node",
+"base": "Resource",
 "class": "ItemTable",
 "language": "GDScript",
-"path": "res://Scripts/Utility/Item/ItemsTable.gd"
-}, {
-"base": "ItemResource",
-"class": "ToolResource",
-"language": "GDScript",
-"path": "res://Scripts/Data/ToolResource.gd"
+"path": "res://Scripts/Utility/ItemsTable.gd"
 } ]
 _global_script_class_icons={
 "ItemRootComponent": "",
-"ItemTable": "",
-"ToolResource": ""
+"ItemTable": ""
 }
 
 [application]
@@ -47,6 +41,7 @@ EItemType="*res://Scripts/Utility/Item/EItemType.gd"
 ItemResource="*res://Scripts/Data/ItemResource.gd"
 ItemFactory="*res://Scripts/Utility/Item/ItemFactory.gd"
 ItemData="*res://Scripts/Utility/ItemData.gd"
+ToolResource="*res://Scripts/Data/ToolResource.gd"
 
 [display]
 

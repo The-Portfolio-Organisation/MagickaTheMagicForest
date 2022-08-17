@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://GeneratingMap.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Models/icon.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Subobjects/map/rock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Subobjects/map/tree.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Audio/icon.png" type="Texture" id=6]
+[ext_resource path="res://Subobjects/map/tower.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpatialMaterial" id=4]
 albedo_texture = ExtResource( 6 )
@@ -19,6 +20,7 @@ uv2_scale = Vector3( 5, 5, 1 )
 script = ExtResource( 1 )
 tree = ExtResource( 5 )
 rock = ExtResource( 4 )
+tower = ExtResource( 7 )
 noise_period = 150
 noise_octave = 10
 map_size = Vector2( 1000, 1000 )
@@ -28,7 +30,7 @@ steepness = 1000
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.407835, 3.21584, 0.921881 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.408, 150, 0.922 )
 speed = 150
 jump_impulse = 100
 

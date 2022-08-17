@@ -2,6 +2,7 @@ extends Spatial
 
 export(PackedScene) var tree;
 export(PackedScene) var rock;
+export(PackedScene) var tower;
 
 export(int) var noise_period = 80;
 export(int) var noise_octave = 6;
@@ -75,6 +76,8 @@ func _ready():
 	mesh_instance.material_override = material;
 	
 	add_child(mesh_instance);
+	
+	spawn_scene(tower, Vector3(0,50,0), 50)
 
 func spawn_scene(scene, pos, scale):
 	var inst = scene.instance();

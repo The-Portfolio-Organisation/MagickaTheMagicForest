@@ -8,6 +8,8 @@ albedo_color = Color( 0.6, 0.65098, 0.654902, 1 )
 [node name="Spatial" type="Spatial"]
 
 [node name="RigidBody" type="RigidBody" parent="."]
+mode = 1
+mass = 20.77
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
 shape = SubResource( 3 )

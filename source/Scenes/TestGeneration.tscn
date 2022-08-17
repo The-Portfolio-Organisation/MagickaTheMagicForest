@@ -24,6 +24,7 @@ noise_octave = 10
 map_size = Vector2( 1000, 1000 )
 map_depth = 50
 map_width = 50
+steepness = 1000
 texture = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]

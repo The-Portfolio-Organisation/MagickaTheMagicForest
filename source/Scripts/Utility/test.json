@@ -1,0 +1,22 @@
+{
+  "1001": {
+    "id": 1001,
+    "name": "sword",
+    "type": "weapons"
+  },
+  "1002": {
+    "id": 1002,
+    "name": "knife",
+    "type": "weapons"
+  },
+  "1003": {
+    "id": 1003,
+    "name": "axe",
+    "type": "weapons"
+  },
+  "1004": {
+    "id": 1004,
+    "name": "bow",
+    "type": "weapons"
+  }
+}

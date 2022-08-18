@@ -25,6 +25,9 @@ height = 2.0
 [node name="Player" type="KinematicBody"]
 collision_mask = 2
 script = ExtResource( 2 )
+speed = 150
+fall_acceleration = 150
+jump_impulse = 150
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -40,6 +43,8 @@ mesh = SubResource( 9 )
 material/0 = null
 
 [node name="Camera" type="Camera" parent="Pivot/Head"]
+near = 0.01
+far = 500.0
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

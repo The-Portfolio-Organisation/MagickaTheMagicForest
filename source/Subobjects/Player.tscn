@@ -34,9 +34,12 @@ mesh = SubResource( 1 )
 skeleton = NodePath("")
 material/0 = null
 
-[node name="Camera" type="Camera" parent="Pivot"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-far = 500.0
+[node name="Head" type="MeshInstance" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38655, 0 )
+mesh = SubResource( 9 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="Pivot/Head"]
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )

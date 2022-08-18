@@ -103,7 +103,7 @@ remote func post_start_game():
 
 # Logistic management
 remote func pre_start_game(spawn_points):
-	var world = load("res://Scenes/Gyms/ItemGym.tscn").instance()
+	var world = load("res://Scenes/Gyms/TestGeneration.tscn").instance()
 	get_tree().get_root().add_child(world)
 
 	get_tree().get_root().get_node("Lobby").hide()
@@ -111,10 +111,11 @@ remote func pre_start_game(spawn_points):
 	var player_scene = load("res://Subobjects/Player.tscn")
 
 	for p_id in spawn_points:
-		var spawn_pos = Transform.IDENTITY 
+		var spawn_pos = Transform.IDENTITY
 		spawn_pos.origin.y = 1
 		spawn_pos.origin = get_p_starting_points(spawn_points, spawn_pos.origin)[p_id]
-			
+		spawn_pos.origin.y = 150
+		
 		var player = player_scene.instance()
 
 		player.set_name(str(p_id)) 

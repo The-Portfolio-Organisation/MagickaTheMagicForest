@@ -1,12 +1,12 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Data/ItemResource.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Textures/Test/AppleTextures.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Models/Test/HP_RockForm_01.obj" type="ArrayMesh" id=3]
+[ext_resource path="res://Assets/Materials/weapons/sword.png" type="Texture" id=2]
+[ext_resource path="res://Subobjects/Items/Prototype/TestSword.tscn" type="PackedScene" id=3]
 
 [resource]
 script = ExtResource( 1 )
-ID = 1004
-DisplayName = "Test_Rock"
-RefModel = ExtResource( 3 )
+ID = 1001
+DisplayKey = "Test Sword"
+RefScene = ExtResource( 3 )
 RefUIImage = ExtResource( 2 )

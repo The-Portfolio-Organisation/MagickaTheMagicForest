@@ -6,7 +6,6 @@ var itemSubscene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	itemSubscene = preload("res://Subobjects/Item.tscn")
 	pass # Replace with function body.
 
 func make_item(var itemData):
@@ -15,10 +14,10 @@ func make_item(var itemData):
 	#if !(itemData is ItemResource):
 		#return null
 	
-	var itemSubobject = itemSubscene.instance()
+	var itemSubobject = itemData.RefScene.instance()
 	var itemRoot = itemSubobject.get_node("./")
 	itemRoot.set_item_resource_data(itemData)
-	
+
 	get_tree().current_scene.add_child(itemSubobject)
 	
 	return itemSubobject

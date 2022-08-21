@@ -1,9 +1,8 @@
 extends Resource
 
 export var ID = 0;
-export(String) var DisplayName = "DISPLAY_NAME"
-export(Mesh) var RefModel;
-export(Shape) var RefCollider = CapsuleShape.new()
+export(String) var DisplayKey = "DISPLAY_NAME"
+export(PackedScene) var RefScene;
 export(StreamTexture) var RefUIImage;
 
 var itemType = EItemType.Default;

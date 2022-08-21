@@ -24,10 +24,10 @@ func try_add_item(new_item_id):
 		ItemId = new_item_id
 		table.add_dict()
 		print(table.table)
-		var new_item_name = table.table[ItemId].DisplayName
+		var new_item_name = table.table[ItemId].DisplayKey
 		
-		var new_item_tex = table.table[ItemId].RefModel
+		#var new_item_tex = table.table[ItemId].RefUIImage
 		
-		$TextureRect.texture = new_item_tex
+		#$TextureRect.texture = new_item_tex
 		return true
 	return false

@@ -18,15 +18,12 @@ func _ready():
 		
 		pos = 100*Vector3(cos(a) - float(i%5)/float(n_pts), 0, sin(a) + float(i%3)/float(n_pts));
 		add_vertex(pos);
-		print(pos)
 		
 		i+=1;
 		a = 2*i*(PI/n_pts);
 		
 		pos = 100*Vector3(cos(a) - float(i%5)/float(n_pts), 0, sin(a) + float(i%3)/float(n_pts));
 		add_vertex(pos);
-		print(pos)
-		print("-------")
 		
 		end();
 	end()

@@ -15,8 +15,6 @@ var active_sec_spell = null;
 func _ready():
 	main_caster = get_node(main_caster_path)
 	sec_caster = get_node(sec_caster_path)
-	print(main_caster)
-	print(sec_caster)
 
 func _physics_process(delta):
 	if (is_network_master()):
@@ -29,7 +27,6 @@ func _physics_process(delta):
 		if(Input.is_action_just_pressed("sec_spell")):
 			active_sec_spell = base_spell.instance();
 			sec_caster.add_child(active_sec_spell);
-			print("hello world")
 		if(Input.is_action_just_released("sec_spell")):
 			sec_caster.remove_child(active_sec_spell);
 			active_sec_spell = null;

@@ -15,7 +15,6 @@ puppet var camera_anglev = 0
 
 
 func _ready():
-	print(transform.basis.y.y)
 	if is_network_master():
 		$Pivot/Head/Camera.make_current()
 	
@@ -37,7 +36,6 @@ func _physics_process(delta):
 		else:
 			$Inventory.show()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-			print(get_items())
 	
 	if (is_network_master()):
 		if (Input.is_action_pressed("move_right")):
@@ -96,8 +94,6 @@ func _input(event):
 			changev = puppet_changev
 
 func change_look_at(point):
-	print("Transform: " + str(transform))
-	print("Point: " + str(point))
 	look_at(point, Vector3.UP)
 
 func get_items():

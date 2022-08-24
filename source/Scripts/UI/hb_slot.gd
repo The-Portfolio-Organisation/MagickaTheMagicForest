@@ -23,7 +23,6 @@ func try_add_item(new_item_id):
 	if (ItemId == null and new_item_id != null):
 		ItemId = new_item_id
 		table.add_dict()
-		print(table.table)
 		var new_item_name = table.table[ItemId].DisplayName
 		
 		var new_item_tex = table.table[ItemId].RefModel

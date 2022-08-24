@@ -7,6 +7,5 @@ var table = {}
 
 func add_dict():
 	for item in items:
-		print(item)
 		table[item.ID] = item
 

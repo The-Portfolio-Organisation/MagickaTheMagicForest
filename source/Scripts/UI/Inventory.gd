@@ -16,7 +16,6 @@ func _ready():
 	for i in range(rows * cols):
 		var  container = baseContainer.instance()
 		container.name = str(i)
-		print(items_table.table)
 		container.table = items_table
 		container.try_add_item(start_content[i])
 		$GridContainer.add_child(container)

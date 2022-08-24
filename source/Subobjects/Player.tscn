@@ -42,12 +42,10 @@ jump_impulse = 150
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 mesh = SubResource( 1 )
 skeleton = NodePath("")
-material/0 = null
 
 [node name="Head" type="MeshInstance" parent="Pivot"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38655, 0 )
 mesh = SubResource( 9 )
-material/0 = null
 
 [node name="Camera" type="Camera" parent="Pivot/Head"]
 near = 0.01
@@ -56,6 +54,8 @@ far = 500.0
 [node name="Hnads" type="Spatial" parent="Pivot"]
 script = ExtResource( 5 )
 base_spell = ExtResource( 6 )
+main_caster_path = NodePath("RHand")
+sec_caster_path = NodePath("LHand")
 
 [node name="RHand" type="MeshInstance" parent="Pivot/Hnads"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.49082, 0.508624, -2.00852 )

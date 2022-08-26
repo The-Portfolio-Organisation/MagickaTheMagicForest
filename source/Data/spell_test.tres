@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/ActorComponents/Player/SpellRessource.gd" type="Script" id=1]
+[ext_resource path="res://Data/ItemData/TestItem.tres" type="Resource" id=2]
+[ext_resource path="res://Scenes/spells/base_spell.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+ID = 0
+DisplayName = "Test"
+type = 0
+hand_effect = ExtResource( 3 )
+item = ExtResource( 2 )

@@ -1,4 +1,5 @@
 extends Resource
+class_name ItemResourceType
 
 export var ID = 0;
 export(String) var DisplayName = "DISPLAY_NAME"

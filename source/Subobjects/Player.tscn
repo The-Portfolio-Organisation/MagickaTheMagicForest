@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/UI/HotBar.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Data/WeaponsTable.tres" type="Resource" id=4]
 [ext_resource path="res://Subobjects/Spells.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/spells/base_spell.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Data/ItemResource.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/ActorComponents/Player/SpellRessource.gd" type="Script" id=9]
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.533333, 0.0784314, 0.411765, 1 )
@@ -20,6 +22,19 @@ albedo_color = Color( 1, 0.964706, 0.0823529, 1 )
 [sub_resource type="CubeMesh" id=9]
 material = SubResource( 8 )
 size = Vector3( 1, 1, 1 )
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 8 )
+ID = 0
+DisplayName = "DISPLAY_NAME"
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 9 )
+ID = 0
+DisplayName = "gfhfgh"
+type = 0
+hand_effect = ExtResource( 6 )
+item = SubResource( 12 )
 
 [sub_resource type="SphereMesh" id=10]
 
@@ -56,6 +71,7 @@ script = ExtResource( 5 )
 base_spell = ExtResource( 6 )
 main_caster_path = NodePath("RHand")
 sec_caster_path = NodePath("LHand")
+main_spell = SubResource( 13 )
 
 [node name="RHand" type="MeshInstance" parent="Pivot/Hnads"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.49082, 0.508624, -2.00852 )

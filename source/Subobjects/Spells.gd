@@ -9,12 +9,15 @@ export(NodePath) var sec_caster_path; # The source of the secondary spells
 var main_caster = Node.new();
 var sec_caster = Node.new();
 
+export(Resource) var main_spell;
+
 var active_main_spell = null;
 var active_sec_spell = null;
 
 func _ready():
 	main_caster = get_node(main_caster_path)
 	sec_caster = get_node(sec_caster_path)
+	main_spell.check_integrity()
 
 func _physics_process(delta):
 	if (is_network_master()):

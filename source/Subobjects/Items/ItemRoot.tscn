@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/ActorComponents/Item/ItemRootComponent.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/ActorComponents/Item/PickupableComponent.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -11,9 +12,12 @@ script = ExtResource( 1 )
 collision_mask = 3
 mass = 0.5
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+[node name="EnvironmentalCollider" type="CollisionShape" parent="RigidBody"]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
 skeleton = NodePath("../..")
+
+[node name="PickupableComponent" type="Node" parent="."]
+script = ExtResource( 2 )

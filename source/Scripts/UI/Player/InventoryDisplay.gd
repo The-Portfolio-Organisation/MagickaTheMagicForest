@@ -1,4 +1,5 @@
 extends Control
+class_name InventoryDisplay
 
 export(int) var rows = 5
 export(int) var cols = 4

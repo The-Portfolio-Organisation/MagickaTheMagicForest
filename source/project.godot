@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "InventoryComponent",
+"language": "GDScript",
+"path": "res://Scripts/ActorComponents/Player/InventoryComponent.gd"
+}, {
+"base": "Control",
+"class": "InventoryDisplay",
+"language": "GDScript",
+"path": "res://Scripts/UI/Player/InventoryDisplay.gd"
+}, {
+"base": "Node",
 "class": "ItemRootComponent",
 "language": "GDScript",
 "path": "res://Scripts/ActorComponents/Item/ItemRootComponent.gd"
@@ -18,10 +28,24 @@ _global_script_classes=[ {
 "class": "ItemTable",
 "language": "GDScript",
 "path": "res://Scripts/Utility/ItemsTable.gd"
+}, {
+"base": "Area",
+"class": "PickupAreaComponent",
+"language": "GDScript",
+"path": "res://Scripts/ActorComponents/Player/PickupAreaComponent.gd"
+}, {
+"base": "Node",
+"class": "PickupableComponent",
+"language": "GDScript",
+"path": "res://Scripts/ActorComponents/Item/PickupableComponent.gd"
 } ]
 _global_script_class_icons={
+"InventoryComponent": "",
+"InventoryDisplay": "",
 "ItemRootComponent": "",
-"ItemTable": ""
+"ItemTable": "",
+"PickupAreaComponent": "",
+"PickupableComponent": ""
 }
 
 [application]
@@ -95,6 +119,7 @@ inventory={
 
 3d_physics/layer_1="player"
 3d_physics/layer_2="world"
+3d_physics/layer_3="pickup"
 
 [physics]
 

@@ -1,13 +1,14 @@
 extends Node
 class_name ItemRootComponent
 
-export(Resource) var itemResourceData
+var itemResourceData
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if(typeof(itemResourceData) != ItemResource):
-		print("ItemRootComponent - Invalid resource type for itemResourceData. Expected \"ItemResource\"")
-		
+	update_components()
+	
+func set_item_data(itemData : ItemResource):
+	itemResourceData = itemData
 	update_components()
 	
 func update_components():

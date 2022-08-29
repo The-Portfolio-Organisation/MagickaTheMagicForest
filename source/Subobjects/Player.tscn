@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Scenes/UI/HotBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ActorComponents/Player/InventoryComponent.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ActorComponents/Player/PlayerMovement.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/UI/Inventory.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/ActorComponents/Player/PickupAreaComponent.gd" type="Script" id=4]
-[ext_resource path="res://Data/ItemData/WeaponsTable.tres" type="Resource" id=5]
 
 [sub_resource type="SpatialMaterial" id=5]
 albedo_color = Color( 0.533333, 0.0784314, 0.411765, 1 )
@@ -51,16 +49,13 @@ script = ExtResource( 4 )
 transform = Transform( 1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 10 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="EnvironmentCollision" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Hotbar" parent="." instance=ExtResource( 1 )]
-items_table = ExtResource( 5 )
+[node name="InventoryComponent" type="Node" parent="."]
+script = ExtResource( 1 )
+pickupAreaNode = NodePath("../Pivot/PickupAreaComponent")
 
-[node name="Inventory" parent="." instance=ExtResource( 3 )]
-start_content = [ 1001 ]
-items_table = ExtResource( 5 )
-
-[connection signal="area_entered" from="Pivot/PickupAreaComponent" to="Pivot/PickupAreaComponent" method="_on_PickupAreaComponent_area_entered"]
 [connection signal="body_entered" from="Pivot/PickupAreaComponent" to="Pivot/PickupAreaComponent" method="_on_body_entered"]
+[connection signal="on_item_picked_up" from="Pivot/PickupAreaComponent" to="InventoryComponent" method="on_item_picked_up"]

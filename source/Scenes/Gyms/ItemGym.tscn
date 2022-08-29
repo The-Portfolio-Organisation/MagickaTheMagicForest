@@ -6,7 +6,6 @@
 [ext_resource path="res://Scripts/ActorComponents/Item/SpawnItemOnReady.gd" type="Script" id=4]
 [ext_resource path="res://Data/ItemData/TestItem.tres" type="Resource" id=5]
 
-
 [sub_resource type="PhysicsMaterial" id=1]
 
 [sub_resource type="BoxShape" id=2]
@@ -42,27 +41,17 @@ environment = ExtResource( 3 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.32592, 0 )
 
-[node name="ItemSpawner" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8752, 4.60675, -15.2769 )
-script = ExtResource( 4 )
-itemResource = ExtResource( 5 )
-
-[node name="ItemSpawner2" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.87517, 4.60675, -17.9723 )
-script = ExtResource( 4 )
-itemResource = ExtResource( 5 )
-
 [node name="ItemSpawner3" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.91723, 4.60675, -9.79267 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.62782, 4.60675, -9.79267 )
 script = ExtResource( 4 )
 itemResource = ExtResource( 5 )
 
 [node name="ItemSpawner4" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.79823, 4.60675, -12.9775 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.40102, 4.60675, -9.79267 )
 script = ExtResource( 4 )
 itemResource = ExtResource( 5 )
 
 [node name="ItemSpawner5" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1594, 4.60675, -20.1385 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.690726, 4.60675, -19.5053 )
 script = ExtResource( 4 )
 itemResource = ExtResource( 5 )

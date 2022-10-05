@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Spell",
 "language": "GDScript",
-"path": "res://Scripts/ActorComponents/Player/SpellRessource.gd"
+"path": "res://Scripts/ActorComponents/Player/Spells/SpellRessource.gd"
 } ]
 _global_script_class_icons={
 "ItemResourceType": "",

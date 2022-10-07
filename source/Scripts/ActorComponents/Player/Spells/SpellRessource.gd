@@ -12,28 +12,23 @@ export(Resource) var item;
 # Projectiles
 export(PackedScene) var projectile_spell;
 
-var head = MeshInstance.new(); # To get directions
-var caster = KinematicBody.new(); # To get position and spawn things
-
 func init(p_head, p_caster):
 	check_integrity();
-	head = p_head;
-	caster = p_caster;
 
 func check_integrity():
 	if item:
 		assert(item is ItemResourceType);
 	
-func cast():
+func cast(head: MeshInstance, caster: KinematicBody):
 	print("Casting " + str(DisplayName) + " with coords: " + str(head.transform));
 	
 	if type == Types.Projectile:
-		var projectile = projectile_spell.instance();
-		projectile.rotation = head.get_parent_spatial().rotation + head.rotation;
-		projectile.translation = caster.translation + head.translation;
-		caster.get_parent().add_child(projectile);
-		
+		var rot = head.get_parent_spatial().rotation + head.rotation;
+		var trans = caster.translation + head.translation;
+		var projectile = NetworkSpellManager.create("fire_ball", caster.get_parent(), rot, trans);
+		#projectile.rotation = head.get_parent_spatial().rotation + head.rotation;
+		#projectile.translation = caster.translation + head.translation;
 	
-func uncast():
+func uncast(head: MeshInstance, caster: KinematicBody):
 	print("Uncasting " + str(DisplayName) + " with coords: " + str(head.transform));
 	

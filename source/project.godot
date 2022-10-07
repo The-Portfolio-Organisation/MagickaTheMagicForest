@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Utility/ItemsTable.gd"
 }, {
+"base": "Node",
+"class": "NetworkFactory",
+"language": "GDScript",
+"path": "res://Scripts/Network/network_spell_manager.gd"
+}, {
 "base": "Resource",
 "class": "Spell",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "ItemResourceType": "",
 "ItemRootComponent": "",
 "ItemTable": "",
+"NetworkFactory": "",
 "Spell": ""
 }
 
@@ -54,6 +60,7 @@ ItemResource="*res://Scripts/Data/ItemResource.gd"
 ItemFactory="*res://Scripts/Utility/Item/ItemFactory.gd"
 ItemData="*res://Scripts/Utility/ItemData.gd"
 ToolResource="*res://Scripts/Data/ToolResource.gd"
+NetworkSpellManager="*res://Scripts/Network/network_spell_manager.gd"
 
 [display]
 
